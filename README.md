@@ -8,6 +8,11 @@ This repo does not contain TuneFinder itself. It contains:
 - a small runner script
 - setup instructions
 
+It supports both:
+
+- onboarding a new local TuneFinder install
+- running an already-configured local TuneFinder install
+
 ## Credit
 
 TuneFinder was created by [Christophe Chang](https://github.com/christophechang).
@@ -26,6 +31,8 @@ This repo is only a companion skill layer for running a local TuneFinder install
 ## Prerequisites
 
 You need your own local TuneFinder install with its own `.env`, Python environment, and Discord/API setup.
+
+If you do not have TuneFinder yet, start with Christophe Chang's original repo and then point this skill at that local clone.
 
 ## Install the skill
 

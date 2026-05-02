@@ -1,17 +1,35 @@
 ---
 name: tunefinder-skill
-description: Use when the user asks to run TuneFinder, generate a weekly music report, or create a genre-specific mix-prep report from a local TuneFinder install.
+description: Use when the user asks to install, configure, onboard, or run TuneFinder locally, including weekly music reports and genre-specific mix-prep reports.
 ---
 
 # TuneFinder Skill
 
-Use this skill when the user wants to run a local TuneFinder install.
+Use this skill when the user wants to install, configure, or run a local TuneFinder install.
 
 ## When to use
 
 - The user says `Run TuneFinder`
+- The user wants help installing or setting up TuneFinder
+- The user wants help connecting this skill to a local TuneFinder clone
 - The user wants a weekly music discovery run
 - The user wants `mix-prep` for a genre like `house`, `ukg`, or `dnb`
+
+## Onboarding flow
+
+If the user is not set up yet, do onboarding before trying to run TuneFinder:
+
+1. Confirm whether they already have a local TuneFinder clone.
+2. If not, point them to Christophe Chang's original repo:
+   `https://github.com/christophechang/TuneFinder`
+3. Have them configure:
+   - TuneFinder's `.env`
+   - TuneFinder's Python environment
+   - `~/.tunefinder-skill/config.env`
+4. Run the helper script with `--mode check-config`.
+5. Only move to `weekly` or `mix-prep` after config passes.
+
+Read [references/setup.md](references/setup.md) for onboarding, install, and troubleshooting steps.
 
 ## Interactive flow
 
@@ -62,6 +80,8 @@ The helper script reads local user config from:
 Read [references/setup.md](references/setup.md) when:
 
 - TuneFinder path is not configured yet
+- TuneFinder is not installed yet
+- the user needs onboarding from zero
 - the local repo path changed
 - the Python executable inside TuneFinder is different
 - the user needs install or troubleshooting help
@@ -69,6 +89,7 @@ Read [references/setup.md](references/setup.md) when:
 ## Execution rules
 
 - Prefer live runs unless the user explicitly asks for a dry run.
+- If setup is incomplete, help the user finish setup before trying to run live commands.
 - If the helper script reports a missing path or invalid config, surface that exact problem.
 - If the run succeeds, tell the user whether it completed and posted successfully.
 - Do not assume this repo contains TuneFinder itself.
