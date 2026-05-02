@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.DS_Store
+
+# Local user config
+config.env
+local.env
+
+# Optional local virtualenvs
+.venv/
+venv/
